@@ -5,9 +5,25 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #000000;
+  height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.icon {
+  width: 45px;
+  height: 45px;
+}
+
+.text-blue {
+  color: #38a0ff;
+}
+
+.icon-blue {
+    /* RGB Equivalent = #38a0ff */
+  filter: invert(58%) sepia(36%) saturate(4581%) hue-rotate(187deg) brightness(101%) contrast(101%);; 
 }
