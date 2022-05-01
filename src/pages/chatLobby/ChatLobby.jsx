@@ -21,10 +21,12 @@ function ChatLobby () {
             </div>
             <div>
                 <h1>Juan Andrade</h1>
-                <div className={idVisible ? '' : 'hide-id'} id='id-display'>
-                    <small className='navbar-button'>Your ID: k12n39ianwa4na</small>
+                <div 
+                  id='id-display'
+                  className={['navbar-button', 'navbar-button--text', (idVisible ? '' : 'hide-id')].join(' ')}>
+                    <small>Your ID: k12n39ianwa4na</small>
                     <img 
-                      className='icon navbar-button'
+                      className='icon icon-blue'
                       src={idVisible ? EyeOpen : EyeClosed} 
                       onClick={() => setIdVisible(!idVisible)} 
                       alt="Toggle view"

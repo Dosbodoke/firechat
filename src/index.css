@@ -27,3 +27,22 @@ code {
     /* RGB Equivalent = #38a0ff */
   filter: invert(58%) sepia(36%) saturate(4581%) hue-rotate(187deg) brightness(101%) contrast(101%);; 
 }
+
+.scroll-element {
+  overflow-y: auto;
+}
+
+.scroll-element::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.scroll-element::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.scroll-element::-webkit-scrollbar-thumb {
+  background-color: rgba(56, 160, 255, .65);
+  border-radius: 10px;
+}

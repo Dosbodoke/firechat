@@ -1,35 +1,4 @@
-#id-display {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .3em;
-}
-
-#id-display .icon {
-    width: 1.5em;
-    height: 1.5em;
-}
-
 #id-display.hide-id small{
     text-shadow: rgba(255, 255, 255, 0.7) 0px 0 8px;
     color: transparent;
-}
-
-.scroll-element {
-    overflow-y: auto;
-}
-
-.scroll-element::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-}
-
-.scroll-element::-webkit-scrollbar-track {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-}
-
-.scroll-element::-webkit-scrollbar-thumb {
-    background-color: rgba(56, 160, 255, .65);
-    border-radius: 10px;
 }
