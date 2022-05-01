@@ -54,6 +54,16 @@ export const store = configureStore({
 
 The **slices** will live along the correspondent component.
 
+# Firebase
+Follow the instruction to [setup firebase on a js project](https://firebase.google.com/docs/web/setup)
+
+The config will live on an untracked file `config.js`
+
+For this projects, the following services will be used:
+- Realtime Database: Choosed based on the [firebase recommendation](https://firebase.google.com/docs/database/rtdb-vs-firestore?#which_database_does_firebase_recommend) for the needs of this project.
+- Authentication
+
+
 **RESOURCES**
 - [React Best Practices](https://www.freecodecamp.org/news/best-practices-for-react/)
 - [Figma Project](https://www.figma.com/file/xWSEVZcheB2anMFPPOZ42B/Firechat?node-id=0%3A1)
