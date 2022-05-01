@@ -3,6 +3,8 @@ A chat app built with React 18 and Firebase.
 
 The idea came from an video from the youtube channel **Fireship**, after whatching, I decided to make a version with more features.
 
+**This documentation is a guide of how this application was built.**
+
 [![Fireship video](https://img.youtube.com/vi/zQyrwxMPm88/0.jpg)](https://www.youtube.com/watch?v=zQyrwxMPm88&t)
 
 # Initial Setup
@@ -10,7 +12,7 @@ The idea came from an video from the youtube channel **Fireship**, after whatchi
     - Select React whitout TypeScript
 2. Enter project folder: `cd firechat && npm install`
     - Make sure that React version in `package.json` is `^18.0.0`
-3. Install React router and redux: `npm install --save redux react-redux`
+3. Install redux toolkit: `npm install --save @reduxjs/toolkit react-redux`
 4. Remove unnecessary files:
     - In `index.html`: Remove favicon import (line 5)
     - In `src/` run: `rm App.css favicon.svg logo.svg`

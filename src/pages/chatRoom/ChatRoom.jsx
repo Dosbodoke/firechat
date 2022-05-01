@@ -1,3 +1,6 @@
+import { useDispatch } from 'react-redux';
+
+import { changePage } from '../../app/pageSlice';
 import './ChatRoom.css';
 import NavBar from '../../components/navbar/NavBar';
 import BackSvg from '../../assets/back.svg';
@@ -7,10 +10,13 @@ import { ChatMessage } from '../../components';
 import froidJpg from '../../assets/froid.jpg'
 
 function ChatRoom() {
+    const dispatch = useDispatch();
+    
     return (
         <>
         <NavBar>
-            <div className="navbar-left navbar-button navbar-button--text">
+            <div className="navbar-left navbar-button navbar-button--text"
+                onClick={() => dispatch(changePage('lobby'))}>
                 <img className="icon icon-blue" src={BackSvg} alt="Back to lobby" />
                 <span className="text-blue">back</span>
             </div>

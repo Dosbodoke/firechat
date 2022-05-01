@@ -1,6 +1,6 @@
 import { ChatApp } from './ChatApp';
-import { LayoutContainer } from './components';
-import { LoginPage } from './pages';
+import { LayoutContainer } from '../components';
+import { LoginPage } from '../pages';
 
 function App() {
   let isLoggedIn = true;

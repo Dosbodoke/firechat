@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-import froidJpg from '../../assets/froid.jpg'
+import { changePage } from '../../app/pageSlice';
 
 import './ChatLobby.css'
+import froidJpg from '../../assets/froid.jpg'
 import NavBar from '../../components/navbar/NavBar';
 import EyeClosed from '../../assets/eye-closed.svg'
 import EyeOpen from '../../assets/eye-open.svg'
@@ -12,6 +14,7 @@ import PlusSvg from '../../assets/plus.svg'
 import { ChatContact } from '../../components';
 
 function ChatLobby () {
+    const dispatch = useDispatch();
     const [idVisible, setIdVisible] = useState(true)
     return (
         <>
@@ -33,7 +36,8 @@ function ChatLobby () {
                     />
                 </div>
             </div>
-            <div className="navbar-right navbar-button">
+            <div className="navbar-right navbar-button"
+                onClick={() => dispatch(changePage('new'))}>
                 <img className="icon icon-blue" src={PlusSvg} alt="new chat" />
             </div>
         </NavBar>

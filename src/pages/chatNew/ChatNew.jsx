@@ -1,12 +1,19 @@
+import { useDispatch } from 'react-redux';
+
+import { changePage } from '../../app/pageSlice';
+
 import './ChatNew.css';
 import NavBar from '../../components/navbar/NavBar';
 import BackSvg from '../../assets/back.svg';
 
 function ChatNew() {
+    const dispatch = useDispatch();
+
     return(
         <>
         <NavBar>
-            <div className="navbar-left navbar-button navbar-button--text">
+            <div className="navbar-left navbar-button navbar-button--text"
+                onClick={() => dispatch(changePage('lobby'))}>
                 <img className="icon icon-blue" src={BackSvg} alt="Back to lobby" />
                 <span className="text-blue">back</span>
             </div>
