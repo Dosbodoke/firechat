@@ -10,16 +10,49 @@ The idea came from an video from the youtube channel **Fireship**, after whatchi
 # Initial Setup
 1. Init project: `npm init vite firechat`
     - Select React whitout TypeScript
-2. Enter project folder: `cd firechat && npm install`
+2. On the project folder: `npm install`
     - Make sure that React version in `package.json` is `^18.0.0`
-3. Install redux toolkit: `npm install --save @reduxjs/toolkit react-redux`
-4. Remove unnecessary files:
-    - In `index.html`: Remove favicon import (line 5)
-    - In `src/` run: `rm App.css favicon.svg logo.svg`
+3. Remove unnecessary files/imports:
+    - On `index.html`: Remove favicon import (line 5)
+    - On `src/` remove: `App.css favicon.svg logo.svg`
     - In `src/App.jsx`: Remove all imports and return content
+4. Rearrange the folder structure to look like this.
+    src/
+    ├─ app/
+    │  ├─ App.jsx
+    ├─ index.css
+    ├─ main.jsx
+    .gitignore
+    index.html
+    package-lock.json
+    package.json
+    README.md
+    vite.config.js
+
 
 # Building the UI
 Firstly I build the [UI in Figma](https://www.figma.com/file/xWSEVZcheB2anMFPPOZ42B/Firechat?node-id=0%3A1) to don't worry about the creative process when coding the UI.
+
+Then create the following folders inside src
+- assets: Will hold the images and svg's
+- components: Reusable components
+- pages: Components that represent an different page
+
+# Store
+For the store will be used **Redux toolkit**, for that, run `npm install --save @reduxjs/toolkit react-redux`
+
+Then create an `store.js` inside src folder with te following code
+
+```
+import { configureStore } from "@reduxjs/toolkit";
+import pageReducer from "./app/pageSlice";
+
+export const store = configureStore({
+    reducer: {},
+})
+```
+
+The **slices** will live along the correspondent component.
 
 **RESOURCES**
 - [React Best Practices](https://www.freecodecamp.org/news/best-practices-for-react/)
