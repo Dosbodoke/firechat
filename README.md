@@ -12,14 +12,16 @@ The idea came from an video from the youtube channel **Fireship**, after whatchi
     - Select React whitout TypeScript
 2. Enter project folder: `cd firechat && npm install`
     - Make sure that React version in `package.json` is `^18.0.0`
-3. Install redux toolkit: `npm install --save @reduxjs/toolkit react-redux`
-4. Remove unnecessary files:
+3. Remove unnecessary files:
     - In `index.html`: Remove favicon import (line 5)
     - In `src/` run: `rm App.css favicon.svg logo.svg`
     - In `src/App.jsx`: Remove all imports and return content
 
 # Building the UI
 Firstly I build the [UI in Figma](https://www.figma.com/file/xWSEVZcheB2anMFPPOZ42B/Firechat?node-id=0%3A1) to don't worry about the creative process when coding the UI.
+
+# Store
+For the store will be used **Redux toolkit**, for that, run `npm install --save @reduxjs/toolkit react-redux`
 
 **RESOURCES**
 - [React Best Practices](https://www.freecodecamp.org/news/best-practices-for-react/)
