@@ -17,6 +17,7 @@ The idea came from an video from the youtube channel **Fireship**, after whatchi
     - On `src/` remove: `App.css favicon.svg logo.svg`
     - In `src/App.jsx`: Remove all imports and return content
 4. Rearrange the folder structure to look like this.
+```
     src/
     ├─ app/
     │  ├─ App.jsx
@@ -28,7 +29,7 @@ The idea came from an video from the youtube channel **Fireship**, after whatchi
     package.json
     README.md
     vite.config.js
-
+```
 
 # Building the UI
 Firstly I build the [UI in Figma](https://www.figma.com/file/xWSEVZcheB2anMFPPOZ42B/Firechat?node-id=0%3A1) to don't worry about the creative process when coding the UI.
