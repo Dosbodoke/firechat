@@ -2,7 +2,7 @@ import './ChatRoom.css';
 import NavBar from '../../components/navbar/NavBar';
 import BackSvg from '../../assets/back.svg';
 import SendSvg from '../../assets/send.svg'
-import { ChatMessage } from '../../components/';
+import { ChatMessage } from '../../components';
 
 import froidJpg from '../../assets/froid.jpg'
 
