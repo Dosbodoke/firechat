@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { signOut } from 'firebase/auth';
 
+import { auth } from '../../firebase';
 import { changePage } from '../../app/pageSlice';
 
 import './ChatLobby.css'
@@ -19,7 +21,8 @@ function ChatLobby () {
     return (
         <>
         <NavBar>
-            <div className="navbar-left navbar-button">
+            <div className="navbar-left navbar-button"
+              onClick={() => signOut(auth)}>
                 <img className="icon icon-blue" src={LogoutSvg} alt="log-out" />
             </div>
             <div>
