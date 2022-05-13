@@ -32,7 +32,8 @@ function ChatLobby() {
               ' '
             )}
           >
-            <small>Your ID: k12n39ianwa4na</small>
+            Your ID: 
+            <small>{auth.currentUser.uid}</small>
             <img
               className="icon icon-blue"
               src={idVisible ? EyeOpen : EyeClosed}
