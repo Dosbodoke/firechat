@@ -1,11 +1,7 @@
-import './NavBar.css'
+import './NavBar.css';
 
-function NavBar (props) {
-    return (
-        <div className="navbar">
-            {props.children}
-        </div>
-    )
+function NavBar(props) {
+  return <div className="navbar">{props.children}</div>;
 }
 
-export default NavBar
+export default NavBar;

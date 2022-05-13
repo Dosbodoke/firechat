@@ -1,28 +1,28 @@
 .contact {
-    position: relative;
-    display: flex;
-    gap: 15px;
-    padding-top: 10px;
-    cursor: pointer;
+  position: relative;
+  display: flex;
+  gap: 15px;
+  padding-top: 10px;
+  cursor: pointer;
 }
 
 .contact:hover {
-    background-color: rgba(255, 255, 255, .08);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .contact-text {
-    width: 100%;
-    border-bottom: 2px solid rgba(255, 255, 255, .7);
-    overflow: hidden;
+  width: 100%;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+  overflow: hidden;
 }
 
 .contact-name {
-    font-size: 22px;
+  font-size: 22px;
 }
 
 .contact-message {
-    opacity: .7;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+  opacity: 0.7;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

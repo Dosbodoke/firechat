@@ -1,46 +1,46 @@
 #chat-new-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    text-align: center;
-    gap: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  gap: 2em;
 }
 
 .chat-new-form {
-    width: 60%;
+  width: 60%;
 }
 
 .chat-new-form p {
-    color: rgba(255, 255, 255, .7);
-    margin: .5em 0;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0.5em 0;
 }
 
 .chat-new-form__input_container {
-    display: flex;
+  display: flex;
 }
 
 .chat-new-form__input_container input[type='text'] {
-    flex-grow: 1;
-    padding: 0 1em;
-    outline: none;
-    border: 0px;
-    color: rgba(255, 255, 255, .7);
-    background-color: rgba(255, 255, 255, .08);
+  flex-grow: 1;
+  padding: 0 1em;
+  outline: none;
+  border: 0px;
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .chat-new-form__input_container input[type='submit'] {
-    cursor: pointer;
-    width: 5em;
-    padding: 1em 0;
-    color: rgba(255, 255, 255, 1);
-    font-size: 1em;
-    background-color: rgba(255, 255, 255, .12);
-    border: 0px;
+  cursor: pointer;
+  width: 5em;
+  padding: 1em 0;
+  color: rgba(255, 255, 255, 1);
+  font-size: 1em;
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 0px;
 }
 
 .chat-new-form__input_container input[type='submit']:hover {
-    background-color: rgba(255, 255, 255, .18);
-    transition: ease-in .2s;
+  background-color: rgba(255, 255, 255, 0.18);
+  transition: ease-in 0.2s;
 }

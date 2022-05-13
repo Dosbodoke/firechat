@@ -1,17 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    page: 'lobby'
-}
+  page: 'lobby'
+};
 
 export const pageSlice = createSlice({
-    name: 'page',
-    initialState,
-    reducers: {
-        changePage: (state, action) => {
-            state.page = action.payload
-        },
-    },
+  name: 'page',
+  initialState,
+  reducers: {
+    changePage: (state, action) => {
+      state.page = action.payload;
+    }
+  }
 });
 
 export const { changePage } = pageSlice.actions;

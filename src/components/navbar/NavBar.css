@@ -1,35 +1,35 @@
-.navbar { 
-    flex-shrink: 0;
-    width: 100%;
-    height: 96px;
-    background-color: rgba(255, 255, 255, .05);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
+.navbar {
+  flex-shrink: 0;
+  width: 100%;
+  height: 96px;
+  background-color: rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
 }
 
 .navbar-left {
-    padding-left: 1em;
+  padding-left: 1em;
 }
 
 .navbar-right {
-    padding-right: 1em;
+  padding-right: 1em;
 }
 
 .navbar-button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .navbar-button--text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: .5em;
-    gap: .3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
+  gap: 0.3em;
 }
 
 .navbar-button--text .icon {
-    width: 1.4em;
-    height: 1.4em;
+  width: 1.4em;
+  height: 1.4em;
 }

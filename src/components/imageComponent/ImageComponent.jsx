@@ -1,9 +1,7 @@
-import './ImageComponent.css'
+import './ImageComponent.css';
 
 function ImageComponent(props) {
-    return(
-        <img className='image' src={props.src} alt="" />
-    )
+  return <img className="image" src={props.src} alt="" />;
 }
 
-export default ImageComponent
+export default ImageComponent;

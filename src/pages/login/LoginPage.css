@@ -1,35 +1,35 @@
 .login-page {
-    position: relative;
-    height: 100vh;
+  position: relative;
+  height: 100vh;
 }
 
 .login-header {
-    font-family: 'Russo One';
-    text-align: center;
-    padding-top: 128px;
+  font-family: 'Russo One';
+  text-align: center;
+  padding-top: 128px;
 }
 
 .login-button {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    position: fixed;
-    padding: 15px;
-    background-color: #1877F2;
-    top: 50%;
-    right: 50%;
-    transform: translate(50%, -50%);
-    z-index: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  position: fixed;
+  padding: 15px;
+  background-color: #1877f2;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  z-index: 1;
 }
 
 .login-button div {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .background-logo {
-    position: absolute;
-    bottom: 0;
-    opacity: .25;
+  position: absolute;
+  bottom: 0;
+  opacity: 0.25;
 }
