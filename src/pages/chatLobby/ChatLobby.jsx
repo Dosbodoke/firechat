@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from 'firebase/auth';
 
-import { auth } from '../../firebase';
+import { auth } from '../../firebase/firebase';
 import { changePage } from '../../app/pageSlice';
 
 import './ChatLobby.css';
@@ -17,7 +17,11 @@ import { ChatContact } from '../../components';
 
 function ChatLobby() {
   const dispatch = useDispatch();
+
+  const userUid = useSelector((state) => state.auth.uid);
+  const userName = useSelector((state) => state.auth.name);
   const [idVisible, setIdVisible] = useState(true);
+
   return (
     <>
       <NavBar>
@@ -25,15 +29,15 @@ function ChatLobby() {
           <img className="icon icon-blue" src={LogoutSvg} alt="log-out" />
         </div>
         <div>
-          <h1>Juan Andrade</h1>
+          <h1>{userName}</h1>
           <div
             id="id-display"
             className={['navbar-button', 'navbar-button--text', idVisible ? '' : 'hide-id'].join(
               ' '
             )}
           >
-            Your ID: 
-            <small>{auth.currentUser.uid}</small>
+            Your ID:
+            <small>{userUid}</small>
             <img
               className="icon icon-blue"
               src={idVisible ? EyeOpen : EyeClosed}
