@@ -13,7 +13,7 @@ function App() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
-  const checkUserData = async (uid, name, photoURL) => {
+  async function checkUserData(uid, name, photoURL) {
     try {
       const ref = `users/${uid}`;
       const dbUser = await getData(ref);
