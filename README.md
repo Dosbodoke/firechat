@@ -8,7 +8,7 @@ The idea came from an video from the youtube channel **Fireship**, after whatchi
 
 [![Fireship video](https://img.youtube.com/vi/zQyrwxMPm88/0.jpg)](https://www.youtube.com/watch?v=zQyrwxMPm88&t)
 
-# Initial Setup
+## Initial Setup
 
 1. Init project: `npm init vite firechat`
    - Select React whitout TypeScript
@@ -20,7 +20,7 @@ The idea came from an video from the youtube channel **Fireship**, after whatchi
    - In `src/App.jsx`: Remove all imports and return content
 4. Rearrange the folder structure to look like this.
 
-```
+```text
     src/
     ├─ app/
     │  ├─ App.jsx
@@ -34,7 +34,7 @@ The idea came from an video from the youtube channel **Fireship**, after whatchi
     vite.config.js
 ```
 
-# Building the UI
+## Building the UI
 
 Firstly I build the [UI in Figma](https://www.figma.com/file/xWSEVZcheB2anMFPPOZ42B/Firechat?node-id=0%3A1) to don't worry about the creative process when coding the UI.
 
@@ -44,13 +44,13 @@ Then create the following folders inside src
 - components: Reusable components
 - pages: Components that represent an different page
 
-# Store
+## Store
 
 For the store will be used **Redux toolkit**, for that, run `npm install --save @reduxjs/toolkit react-redux`
 
 Then create an `store.js` inside src folder with te following code
 
-```
+```javaScript
 import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({
@@ -60,7 +60,7 @@ export const store = configureStore({
 
 The **slices** will live along the correspondent component.
 
-# Firebase
+## Firebase
 
 Follow the instruction to [setup firebase on a js project](https://firebase.google.com/docs/web/setup)
 
@@ -71,7 +71,7 @@ For this projects, the following services will be used:
 - Realtime Database: Choosed based on the [firebase recommendation](https://firebase.google.com/docs/database/rtdb-vs-firestore?#which_database_does_firebase_recommend) for the needs of this project.
 - Authentication
 
-**RESOURCES**
+## RESOURCES
 
 - [React Best Practices](https://www.freecodecamp.org/news/best-practices-for-react/)
 - [Figma Project](https://www.figma.com/file/xWSEVZcheB2anMFPPOZ42B/Firechat?node-id=0%3A1)
