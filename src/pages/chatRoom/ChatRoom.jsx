@@ -1,13 +1,12 @@
 import { useDispatch } from 'react-redux';
 
 import { changePage } from '../../app/pageSlice';
-import './ChatRoom.css';
+
 import NavBar from '../../components/navbar/NavBar';
-import BackSvg from '../../assets/back.svg';
-import SendSvg from '../../assets/send.svg';
 import { ChatMessage } from '../../components';
 
-import froidJpg from '../../assets/froid.jpg';
+import './ChatRoom.css';
+import { backSvg, sendSvg, froidJpg} from '../../assets';
 
 function ChatRoom() {
   const dispatch = useDispatch();
@@ -19,7 +18,7 @@ function ChatRoom() {
           className="navbar-left navbar-button navbar-button--text"
           onClick={() => dispatch(changePage('lobby'))}
         >
-          <img className="icon icon-blue" src={BackSvg} alt="Back to lobby" />
+          <img className="icon icon-blue" src={backSvg} alt="Back to lobby" />
           <span className="text-blue">back</span>
         </div>
         <div>
@@ -242,7 +241,7 @@ function ChatRoom() {
       <form id="chat-sender">
         <textarea placeholder="Remember, be nice!" name="" id="" cols="30" rows="10"></textarea>
         <button>
-          <img className="icon" src={SendSvg} alt="send" />
+          <img className="icon" src={sendSvg} alt="send" />
         </button>
       </form>
     </>

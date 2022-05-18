@@ -5,15 +5,11 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase/firebase';
 import { changePage } from '../../app/pageSlice';
 
-import './ChatLobby.css';
-import froidJpg from '../../assets/froid.jpg';
 import NavBar from '../../components/navbar/NavBar';
-import EyeClosed from '../../assets/eye-closed.svg';
-import EyeOpen from '../../assets/eye-open.svg';
-import LogoutSvg from '../../assets/logout.svg';
-import PlusSvg from '../../assets/plus.svg';
-
 import { ChatContact } from '../../components';
+
+import './ChatLobby.css';
+import { eyeClosedSvg, eyeOpenSvg, logoutSvg, plusSvg, froidJpg } from '../../assets';
 
 function ChatLobby() {
   const dispatch = useDispatch();
@@ -26,7 +22,7 @@ function ChatLobby() {
     <>
       <NavBar>
         <div className="navbar-left navbar-button" onClick={() => signOut(auth)}>
-          <img className="icon icon-blue" src={LogoutSvg} alt="log-out" />
+          <img className="icon icon-blue" src={logoutSvg} alt="log-out" />
         </div>
         <div>
           <h1>{userName}</h1>
@@ -40,14 +36,14 @@ function ChatLobby() {
             <small>{userUid}</small>
             <img
               className="icon icon-blue"
-              src={idVisible ? EyeOpen : EyeClosed}
+              src={idVisible ? eyeOpenSvg : eyeClosedSvg}
               onClick={() => setIdVisible(!idVisible)}
               alt="Toggle view"
             />
           </div>
         </div>
         <div className="navbar-right navbar-button" onClick={() => dispatch(changePage('new'))}>
-          <img className="icon icon-blue" src={PlusSvg} alt="new chat" />
+          <img className="icon icon-blue" src={plusSvg} alt="new chat" />
         </div>
       </NavBar>
       <div className="scroll-element">
