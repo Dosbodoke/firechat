@@ -1,21 +1,53 @@
-import { ref, get, set, update, child } from 'firebase/database';
+import {
+  ref,
+  get,
+  set,
+  update,
+  off,
+  onChildAdded,
+  onChildChanged,
+  onChildRemoved,
+  onValue
+} from 'firebase/database';
 import { db } from './firebase';
 
-const dbRef = ref(db);
-
-const updateData = (node, data) => {
-  update(child(dbRef, node), data);
+const updateData = async (path, data) => {
+  update(ref(db, path), data);
 };
 
-const setData = (node, data) => {
-  set(child(dbRef, node), data);
+const setData = async (path, data) => {
+  set(ref(db, path), data);
 };
 
-const getData = async (node) => {
-  const snapshot = await get(child(dbRef, node)).then((snapshot) => {
+const getData = async (path) => {
+  const snapshot = await get(ref(db, path)).then((snapshot) => {
     return snapshot;
   });
   return snapshot.exists() ? snapshot.val() : undefined;
 };
 
-export { updateData, setData, getData };
+const listenChildrens = (path, callback) => {
+  onChildAdded(ref(db, path), (data) => {
+    callback('added', data);
+  });
+
+  onChildChanged(ref(db, path), (data) => {
+    callback('changed', data);
+  });
+
+  onChildRemoved(ref(db, path), (data) => {
+    callback('removed', data);
+  });
+};
+
+const listenValue = (path, callback) => {
+  onValue(ref(db, path), (snapshot) => {
+    callback(snapshot);
+  });
+};
+
+const removeReference = (path) => {
+  off(ref(db, path));
+};
+
+export { updateData, setData, getData, listenChildrens, listenValue, removeReference };

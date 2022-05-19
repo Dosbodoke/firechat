@@ -13,7 +13,7 @@ import { eyeClosedSvg, eyeOpenSvg, logoutSvg, plusSvg, froidJpg } from '../../as
 
 function ChatLobby() {
   const dispatch = useDispatch();
-
+  const chats = useSelector((state) => state.chat);
   const userUid = useSelector((state) => state.auth.uid);
   const userName = useSelector((state) => state.auth.name);
   const [idVisible, setIdVisible] = useState(true);
@@ -47,6 +47,16 @@ function ChatLobby() {
         </div>
       </NavBar>
       <div className="scroll-element">
+        {Object.entries(chats).map(([key, value]) => {
+          return (
+            <ChatContact
+              key={key}
+              image={value.photoURL}
+              name={value.name}
+              message={value.lastMessage}
+            />
+          );
+        })}
         <ChatContact
           image={froidJpg}
           name="Froid"

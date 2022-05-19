@@ -9,10 +9,13 @@ export const chatSlice = createSlice({
     saveChat: (state, action) => {
       const { key, data } = action.payload;
       state[key] = data;
+    },
+    removeChat: (state, action) => {
+      delete state[action.payload];
     }
   }
 });
 
-export const { saveChat } = chatSlice.actions;
+export const { saveChat, removeChat } = chatSlice.actions;
 
 export default chatSlice.reducer;
