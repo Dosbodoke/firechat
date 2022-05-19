@@ -17,9 +17,8 @@ import { getShortName, photoIsOutdated } from '../utils';
 
 import { LoginPage } from '../pages';
 import { ChatApp } from './ChatApp';
-import { LayoutContainer } from '../components';
 
-function App() {
+export default function App() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth);
 
@@ -72,7 +71,6 @@ function App() {
       }
     });
   }
-  return <LayoutContainer>{user.isLoggedIn ? <ChatApp /> : <LoginPage />}</LayoutContainer>;
-}
 
-export default App;
+  return user.isLoggedIn ? <ChatApp /> : <LoginPage />;
+}
