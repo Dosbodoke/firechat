@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
 
-import { changePage } from '../../app/pageSlice';
+import { changePage } from '../../store/slices/pageSlice';
 
 import NavBar from '../../components/navbar/NavBar';
 import { ChatMessage } from '../../components';
 
 import './ChatRoom.css';
-import { backSvg, sendSvg, froidJpg} from '../../assets';
+import { backSvg, sendSvg, froidJpg } from '../../assets';
 
 function ChatRoom() {
   const dispatch = useDispatch();

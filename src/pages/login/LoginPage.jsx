@@ -3,7 +3,7 @@ import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../../firebase/firebase';
 
 import './LoginPage.css';
-import { flameSvg, googleSvg } from '../../assets'
+import { flameSvg, googleSvg } from '../../assets';
 
 function LoginPage() {
   const handleLogin = () => {

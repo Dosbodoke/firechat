@@ -1,14 +1,15 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
 
 import { auth } from '../firebase/firebase';
 import { getData, setData, updateData } from '../firebase/firebase.database';
-import { ChatApp } from './ChatApp';
-import { LayoutContainer } from '../components';
-import { LoginPage } from '../pages';
-import { useEffect } from 'react';
-import { saveUser } from './authSlice';
+import { saveUser } from '../store/slices/authSlice';
 import { getShortName } from '../utils';
+
+import { LayoutContainer } from '../components';
+import { ChatApp } from './ChatApp';
+import { LoginPage } from '../pages';
 
 function App() {
   const dispatch = useDispatch();

@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
 
-import { changePage } from '../../app/pageSlice';
+import { changePage } from '../../store/slices/pageSlice';
 
 import NavBar from '../../components/navbar/NavBar';
 
 import './ChatNew.css';
-import { backSvg, } from '../../assets';
+import { backSvg } from '../../assets';
 
 function ChatNew() {
   const dispatch = useDispatch();

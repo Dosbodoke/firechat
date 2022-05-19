@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from 'firebase/auth';
 
 import { auth } from '../../firebase/firebase';
-import { changePage } from '../../app/pageSlice';
+import { changePage } from '../../store/slices/pageSlice';
 
 import NavBar from '../../components/navbar/NavBar';
 import { ChatContact } from '../../components';
