@@ -36,7 +36,7 @@ export default function App() {
         userData.name = dbUser.name;
       } else {
         const shortName = getShortName(name);
-        await setData(path, { name: shortName, photoURL, chats: { JiGh_31GA20JabpZBfa: true } });
+        await setData(path, { name: shortName, photoURL });
         userData.name = shortName;
       }
       return userData;

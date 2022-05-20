@@ -8,39 +8,58 @@
   gap: 2em;
 }
 
-.chat-new-form {
+.chat-form {
   width: 60%;
 }
 
-.chat-new-form p {
+.chat-form p {
   color: rgba(255, 255, 255, 0.7);
   margin: 0.5em 0;
 }
 
-.chat-new-form__input_container {
+.chat-form__container {
   display: flex;
 }
 
-.chat-new-form__input_container input[type='text'] {
+.chat-form__input {
+  background-color: rgba(255, 255, 255, 0.08);
   flex-grow: 1;
+  display: flex;
+  gap: 1em;
   padding: 0 1em;
+}
+
+.image-upload img {
+  cursor: pointer;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
+
+.image-upload>input {
+  display: none;
+}
+
+.chat-form__input input[type='text'] {
+  background-color: transparent;
+  flex-grow: 1;
   outline: none;
   border: 0px;
   color: rgba(255, 255, 255, 0.7);
-  background-color: rgba(255, 255, 255, 0.08);
 }
 
-.chat-new-form__input_container input[type='submit'] {
+.chat-form__container button {
   cursor: pointer;
   width: 5em;
   padding: 1em 0;
   color: rgba(255, 255, 255, 1);
   font-size: 1em;
-  background-color: rgba(255, 255, 255, 0.12);
+  font-weight: bold;
+  background-color: rgba(24, 119, 242, .6);
   border: 0px;
 }
 
-.chat-new-form__input_container input[type='submit']:hover {
-  background-color: rgba(255, 255, 255, 0.18);
+.chat-form__container button:hover {
+  background-color: rgba(24, 119, 242, .8);
   transition: ease-in 0.2s;
 }
