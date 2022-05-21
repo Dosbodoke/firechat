@@ -7,6 +7,7 @@ import logoutSvg from './logout.svg';
 import plusSvg from './plus.svg';
 import sendSvg from './send.svg';
 import froidJpg from './froid.jpg';
+import logoPng from './logo.png'
 
 export {
   backSvg,
@@ -17,5 +18,6 @@ export {
   logoutSvg,
   plusSvg,
   sendSvg,
-  froidJpg
+  froidJpg,
+  logoPng
 };
