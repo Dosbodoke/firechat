@@ -1,5 +1,8 @@
-import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { ref, push, update } from 'firebase/database';
 
+import { db } from '../../firebase/firebase';
 import { changePage } from '../../store/slices/pageSlice';
 
 import { ChatMessage, NavBar } from '../../components';
@@ -9,6 +12,25 @@ import { backSvg, sendSvg, froidJpg } from '../../assets';
 
 function ChatRoom() {
   const dispatch = useDispatch();
+
+  const userUid = useSelector((state) => state.auth.uid)
+  const roomId = useSelector((state) => state.page.roomId)
+  const [ textValue, setTextValue ] = useState('')
+
+  const sendMessage = (e) => {
+    e.preventDefault()
+    if (!textValue) return
+
+    const data = {
+      senderUid: userUid,
+      message: textValue,
+      createdAt: new Date().getTime()
+    }
+    push(ref(db, `messages/${roomId}`), data)
+    update(ref(db, `chats/${roomId}`), {lastMessage: textValue})
+    
+    setTextValue('')
+  }
 
   return (
     <>
@@ -238,8 +260,8 @@ function ChatRoom() {
         </ChatMessage>
       </div>
       <form id="chat-sender">
-        <textarea placeholder="Remember, be nice!" name="" id="" cols="30" rows="10"></textarea>
-        <button>
+        <textarea placeholder="Remember, be nice!" value={textValue} onInput={e => setTextValue(e.target.value)}></textarea>
+        <button onClick={sendMessage}>
           <img className="icon" src={sendSvg} alt="send" />
         </button>
       </form>

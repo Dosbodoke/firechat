@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from 'firebase/auth';
+import { ref, get } from 'firebase/database';
 
-import { auth } from '../../firebase/firebase';
+import { auth, db } from '../../firebase/firebase';
 import { changePage } from '../../store/slices/pageSlice';
 
 import NavBar from '../../components/navbar/NavBar';
@@ -17,6 +18,12 @@ function ChatLobby() {
   const userUid = useSelector((state) => state.auth.uid);
   const userName = useSelector((state) => state.auth.name);
   const [idVisible, setIdVisible] = useState(true);
+
+  const getMessage = async (roomKey, messageKey) => {
+    const message = await get(ref(db, `messages/${roomKey}/${messageKey}`))
+
+    return message
+  }
 
   return (
     <>
