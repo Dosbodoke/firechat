@@ -2,8 +2,7 @@ import { useDispatch } from 'react-redux';
 
 import { changePage } from '../../store/slices/pageSlice';
 
-import NavBar from '../../components/navbar/NavBar';
-import { ChatMessage } from '../../components';
+import { ChatMessage, NavBar } from '../../components';
 
 import './ChatRoom.css';
 import { backSvg, sendSvg, froidJpg } from '../../assets';
