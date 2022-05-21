@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux';
 import { ChatLobby, ChatRoom, ChatNew } from '../pages';
 
 function ChatApp() {
-  const page = useSelector((state) => state.page.page);
+  const pageName = useSelector((state) => state.page.name);
   const renderPage = {
     lobby: <ChatLobby />,
     room: <ChatRoom />,
     new: <ChatNew />
   };
 
-  return renderPage[page];
+  return renderPage[pageName];
 }
 
 export { ChatApp };

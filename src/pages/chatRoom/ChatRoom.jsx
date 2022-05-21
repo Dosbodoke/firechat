@@ -16,7 +16,7 @@ function ChatRoom() {
       <NavBar>
         <div
           className="navbar-left navbar-button navbar-button--text"
-          onClick={() => dispatch(changePage('lobby'))}
+          onClick={() => dispatch(changePage({name: 'lobby'}))}
         >
           <img className="icon icon-blue" src={backSvg} alt="Back to lobby" />
           <span className="text-blue">back</span>

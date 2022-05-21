@@ -3,7 +3,7 @@ import { ImageComponent } from '../index';
 
 function ChatContact(props) {
   return (
-    <div className="contact">
+    <div className="contact" onClick={props.onClick}>
       <ImageComponent src={props.image} />
       <div className="contact-text">
         <h2 className="contact-name">{props.name}</h2>

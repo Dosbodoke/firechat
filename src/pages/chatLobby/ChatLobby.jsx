@@ -42,7 +42,7 @@ function ChatLobby() {
             />
           </div>
         </div>
-        <div className="navbar-right navbar-button" onClick={() => dispatch(changePage('new'))}>
+        <div className="navbar-right navbar-button" onClick={() => dispatch(changePage({name: 'new'}))}>
           <img className="icon icon-blue" src={plusSvg} alt="new chat" />
         </div>
       </NavBar>
@@ -54,6 +54,7 @@ function ChatLobby() {
               image={value.photoURL}
               name={value.name}
               message={value.lastMessage}
+              onClick={() => dispatch(changePage({name: 'room', roomId: key}))}
             />
           );
         })}
