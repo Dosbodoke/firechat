@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ref, push, update } from 'firebase/database';
+import { ref, push, update, get } from 'firebase/database';
 import { ref as sRef, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -34,12 +34,30 @@ function ChatNew() {
     updates[`/users/${userUid}/chats/${newChatKey}`] = true;
     updates[`/members/${newChatKey}`] = { [userUid]: true };
     update(ref(db), updates);
-
     setNewChatName('');
+    dispatch(changePage({ name: 'room', roomId: newChatKey }));
   };
 
   const joinChatSubmit = (e) => {
     e.preventDefault();
+    if (!joinId) return;
+
+    get(ref(db, `chats/${joinId}`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const updates = {};
+          updates[`members/${joinId}/${userUid}`] = true;
+          updates[`users/${userUid}/chats/${joinId}`] = true;
+          update(ref(db), updates);
+          setJoinId('');
+          dispatch(changePage({ name: 'room', roomId: joinId }));
+        } else {
+          console.log("Chat don't exist");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleImgChange = (e) => {
