@@ -13,31 +13,31 @@ import { backSvg, sendSvg, froidJpg } from '../../assets';
 function ChatRoom() {
   const dispatch = useDispatch();
 
-  const userUid = useSelector((state) => state.auth.uid)
-  const roomId = useSelector((state) => state.page.roomId)
-  const [ textValue, setTextValue ] = useState('')
+  const userUid = useSelector((state) => state.auth.uid);
+  const roomId = useSelector((state) => state.page.roomId);
+  const [textValue, setTextValue] = useState('');
 
   const sendMessage = (e) => {
-    e.preventDefault()
-    if (!textValue) return
+    e.preventDefault();
+    if (!textValue) return;
 
     const data = {
       senderUid: userUid,
       message: textValue,
       createdAt: new Date().getTime()
-    }
-    push(ref(db, `messages/${roomId}`), data)
-    update(ref(db, `chats/${roomId}`), {lastMessage: textValue})
-    
-    setTextValue('')
-  }
+    };
+    push(ref(db, `messages/${roomId}`), data);
+    update(ref(db, `chats/${roomId}`), { lastMessage: textValue });
+
+    setTextValue('');
+  };
 
   return (
     <>
       <NavBar>
         <div
           className="navbar-left navbar-button navbar-button--text"
-          onClick={() => dispatch(changePage({name: 'lobby'}))}
+          onClick={() => dispatch(changePage({ name: 'lobby' }))}
         >
           <img className="icon icon-blue" src={backSvg} alt="Back to lobby" />
           <span className="text-blue">back</span>
@@ -260,7 +260,11 @@ function ChatRoom() {
         </ChatMessage>
       </div>
       <form id="chat-sender">
-        <textarea placeholder="Remember, be nice!" value={textValue} onInput={e => setTextValue(e.target.value)}></textarea>
+        <textarea
+          placeholder="Remember, be nice!"
+          value={textValue}
+          onInput={(e) => setTextValue(e.target.value)}
+        ></textarea>
         <button onClick={sendMessage}>
           <img className="icon" src={sendSvg} alt="send" />
         </button>

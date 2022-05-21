@@ -8,6 +8,6 @@ import { firebaseConfig } from './firebaseConfig';
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const auth = getAuth(app);
-const storage = getStorage(app)
+const storage = getStorage(app);
 
 export { db, auth, storage };

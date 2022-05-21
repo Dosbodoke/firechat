@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from 'firebase/auth';
-import { ref, get } from 'firebase/database';
 
-import { auth, db } from '../../firebase/firebase';
+import { auth } from '../../firebase/firebase';
 import { changePage } from '../../store/slices/pageSlice';
 
-import NavBar from '../../components/navbar/NavBar';
-import { ChatContact } from '../../components';
+import { ChatContact, NavBar } from '../../components';
 
 import './ChatLobby.css';
 import { eyeClosedSvg, eyeOpenSvg, logoutSvg, plusSvg, froidJpg } from '../../assets';
@@ -18,12 +16,6 @@ function ChatLobby() {
   const userUid = useSelector((state) => state.auth.uid);
   const userName = useSelector((state) => state.auth.name);
   const [idVisible, setIdVisible] = useState(true);
-
-  const getMessage = async (roomKey, messageKey) => {
-    const message = await get(ref(db, `messages/${roomKey}/${messageKey}`))
-
-    return message
-  }
 
   return (
     <>
@@ -49,7 +41,10 @@ function ChatLobby() {
             />
           </div>
         </div>
-        <div className="navbar-right navbar-button" onClick={() => dispatch(changePage({name: 'new'}))}>
+        <div
+          className="navbar-right navbar-button"
+          onClick={() => dispatch(changePage({ name: 'new' }))}
+        >
           <img className="icon icon-blue" src={plusSvg} alt="new chat" />
         </div>
       </NavBar>
@@ -61,7 +56,7 @@ function ChatLobby() {
               image={value.photoURL}
               name={value.name}
               message={value.lastMessage}
-              onClick={() => dispatch(changePage({name: 'room', roomId: key}))}
+              onClick={() => dispatch(changePage({ name: 'room', roomId: key }))}
             />
           );
         })}

@@ -16,64 +16,64 @@ function ChatNew() {
   const dispatch = useDispatch();
 
   const userUid = useSelector((state) => state.auth.uid);
-  const [ newChatName, setNewChatName ] = useState('')
-  const [ joinId, setJoinId ] = useState('')
-  const [ imgUrl, setImgUrl ] = useState(logoPng)
-  const [ progresspercent, setProgresspercent ] = useState(0);
+  const [newChatName, setNewChatName] = useState('');
+  const [joinId, setJoinId] = useState('');
+  const [imgUrl, setImgUrl] = useState(logoPng);
+  const [progresspercent, setProgresspercent] = useState(0);
 
   const createNewChat = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!newChatName || newChatName.length < 5) {
-      return
+      return;
     }
-    
-    const data = {name: newChatName, photoURL: imgUrl, lastMessage: ''}
+
+    const data = { name: newChatName, photoURL: imgUrl, lastMessage: '' };
     const newChatKey = push(ref(db, 'chats'), data).key;
-    
-    const updates = {}
-    updates[`/users/${userUid}/chats/${newChatKey}`] = true
-    updates[`/members/${newChatKey}`] = {[userUid]: true}
-    update(ref(db), updates)
-    
-    setNewChatName('')
-  }
+
+    const updates = {};
+    updates[`/users/${userUid}/chats/${newChatKey}`] = true;
+    updates[`/members/${newChatKey}`] = { [userUid]: true };
+    update(ref(db), updates);
+
+    setNewChatName('');
+  };
 
   const joinChatSubmit = (e) => {
-    e.preventDefault()
-  }
-  
+    e.preventDefault();
+  };
+
   const handleImgChange = (e) => {
-    e.preventDefault()
-    const file = e.target.files[0]
+    e.preventDefault();
+    const file = e.target.files[0];
 
     if (!file) return;
 
     const storageRef = sRef(storage, `photos/${uuidv4()}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
-    uploadTask.on("state_changed",
+    uploadTask.on(
+      'state_changed',
       (snapshot) => {
-        const progress =
-          Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
         setProgresspercent(progress);
       },
       (error) => {
-        console.log(error)
+        console.log(error);
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setImgUrl(downloadURL)
+          setImgUrl(downloadURL);
         });
       }
     );
-  }
+  };
 
   return (
     <>
       <NavBar>
         <div
           className="navbar-left navbar-button navbar-button--text"
-          onClick={() => dispatch(changePage({name: 'lobby'}))}
+          onClick={() => dispatch(changePage({ name: 'lobby' }))}
         >
           <img className="icon icon-blue" src={backSvg} alt="Back to lobby" />
           <span className="text-blue">back</span>
@@ -84,7 +84,6 @@ function ChatNew() {
         <div className="navbar-right "></div>
       </NavBar>
       <div id="chat-new-container">
-
         <form className="chat-form">
           <h2>Create new chat</h2>
           <p>
@@ -92,12 +91,17 @@ function ChatNew() {
           </p>
           <div className="chat-form__container">
             <div className="chat-form__input">
-              <input type="text" placeholder='Chat name' value={newChatName} onInput={e => setNewChatName(e.target.value)}/>
+              <input
+                type="text"
+                placeholder="Chat name"
+                value={newChatName}
+                onInput={(e) => setNewChatName(e.target.value)}
+              />
               <div className="image-upload">
                 <label htmlFor="file-input">
-                  <img src={imgUrl}/>
+                  <img src={imgUrl} />
                 </label>
-                <input id="file-input" type="file" accept="image/*" onChange={handleImgChange}/>
+                <input id="file-input" type="file" accept="image/*" onChange={handleImgChange} />
               </div>
             </div>
             <button onClick={createNewChat}>create</button>
@@ -109,12 +113,16 @@ function ChatNew() {
           <p>Enter a chat ID and start a conversation</p>
           <div className="chat-form__container">
             <div className="chat-form__input">
-              <input type="text" placeholder='Chat ID' value={joinId} onInput={e => setJoinId(e.target.value)}/>
+              <input
+                type="text"
+                placeholder="Chat ID"
+                value={joinId}
+                onInput={(e) => setJoinId(e.target.value)}
+              />
             </div>
             <button onClick={joinChatSubmit}>join</button>
           </div>
         </form>
-
       </div>
     </>
   );

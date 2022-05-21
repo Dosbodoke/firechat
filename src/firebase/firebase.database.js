@@ -22,7 +22,7 @@ export const setData = async (path, data) => {
 
 export const pushData = async (path, data) => {
   push(ref(db, path), data);
-}
+};
 
 export const getData = async (path) => {
   const snapshot = await get(ref(db, path)).then((snapshot) => {

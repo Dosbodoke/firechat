@@ -36,7 +36,7 @@
   height: 45px;
 }
 
-.image-upload>input {
+.image-upload > input {
   display: none;
 }
 
@@ -55,11 +55,11 @@
   color: rgba(255, 255, 255, 1);
   font-size: 1em;
   font-weight: bold;
-  background-color: rgba(24, 119, 242, .6);
+  background-color: rgba(24, 119, 242, 0.6);
   border: 0px;
 }
 
 .chat-form__container button:hover {
-  background-color: rgba(24, 119, 242, .8);
+  background-color: rgba(24, 119, 242, 0.8);
   transition: ease-in 0.2s;
 }

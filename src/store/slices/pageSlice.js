@@ -10,9 +10,9 @@ export const pageSlice = createSlice({
   initialState,
   reducers: {
     changePage: (state, action) => {
-      const { name, roomId } = action.payload
-      state.name = name
-      state.roomId = roomId || ''
+      const { name, roomId } = action.payload;
+      state.name = name;
+      state.roomId = roomId || '';
     }
   }
 });
