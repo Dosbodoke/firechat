@@ -4,10 +4,6 @@ import {
   set,
   update,
   off,
-  onChildAdded,
-  onChildChanged,
-  onChildRemoved,
-  onValue,
   push
 } from 'firebase/database';
 import { db } from './firebase';
@@ -29,26 +25,6 @@ export const getData = async (path) => {
     return snapshot;
   });
   return snapshot.exists() ? snapshot.val() : undefined;
-};
-
-export const listenChildrens = (path, callback) => {
-  onChildAdded(ref(db, path), (data) => {
-    callback('added', data);
-  });
-
-  onChildChanged(ref(db, path), (data) => {
-    callback('changed', data);
-  });
-
-  onChildRemoved(ref(db, path), (data) => {
-    callback('removed', data);
-  });
-};
-
-export const listenValue = (path, callback) => {
-  onValue(ref(db, path), (snapshot) => {
-    callback(snapshot);
-  });
 };
 
 export const removeReference = (path) => {
