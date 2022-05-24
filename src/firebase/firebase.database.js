@@ -1,11 +1,4 @@
-import {
-  ref,
-  get,
-  set,
-  update,
-  off,
-  push
-} from 'firebase/database';
+import { ref, get, set, update, push } from 'firebase/database';
 import { db } from './firebase';
 
 export const updateData = async (path, data) => {
@@ -25,8 +18,4 @@ export const getData = async (path) => {
     return snapshot;
   });
   return snapshot.exists() ? snapshot.val() : undefined;
-};
-
-export const removeReference = (path) => {
-  off(ref(db, path));
 };

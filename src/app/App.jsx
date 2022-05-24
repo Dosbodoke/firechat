@@ -1,15 +1,10 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
-import { onChildAdded, onChildRemoved, onValue, ref } from 'firebase/database';
+import { onChildAdded, onChildRemoved, onValue, ref, off } from 'firebase/database';
 
 import { auth, db } from '../firebase/firebase';
-import {
-  getData,
-  setData,
-  updateData,
-  removeReference
-} from '../firebase/firebase.database';
+import { getData, setData, updateData } from '../firebase/firebase.database';
 import { saveUser } from '../store/slices/authSlice';
 import { saveChat, removeChat } from '../store/slices/chatSlice';
 import { getShortName, photoIsOutdated } from '../utils';
@@ -57,18 +52,18 @@ export default function App() {
   }, []);
 
   if (user.isLoggedIn) {
-    const userChatsRef = ref(db, `users/${user.uid}/chats`) 
-    
-    onChildAdded(userChatsRef, data => {
+    const userChatsRef = ref(db, `users/${user.uid}/chats`);
+
+    onChildAdded(userChatsRef, (data) => {
       onValue(ref(db, `chats/${data.key}`), (snapshot) => {
         dispatch(saveChat({ key: snapshot.key, data: snapshot.val() }));
-      })
-    })
+      });
+    });
 
-    onChildRemoved(userChatsRef, data => {
-      removeReference(`chats/${data.key}`);
-      dispatch(removeChat(data.key))
-    })
+    onChildRemoved(userChatsRef, (data) => {
+      off(`chats/${data.key}`);
+      dispatch(removeChat(data.key));
+    });
   }
 
   return user.isLoggedIn ? <ChatApp /> : <LoginPage />;
