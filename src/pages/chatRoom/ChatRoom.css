@@ -3,6 +3,7 @@
 }
 
 #chat-sender {
+  margin-top: auto;
   flex-shrink: 0;
   height: 4em;
   display: flex;

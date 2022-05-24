@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   name: 'lobby',
-  roomId: ''
+  room: { key: '', name: '' }
 };
 
 export const pageSlice = createSlice({
@@ -10,9 +10,9 @@ export const pageSlice = createSlice({
   initialState,
   reducers: {
     changePage: (state, action) => {
-      const { name, roomId } = action.payload;
+      const { name, room } = action.payload;
       state.name = name;
-      state.roomId = roomId || '';
+      state.room = room || { key: '', name: '' };
     }
   }
 });

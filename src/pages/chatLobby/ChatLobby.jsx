@@ -8,7 +8,7 @@ import { changePage } from '../../store/slices/pageSlice';
 import { ChatContact, NavBar } from '../../components';
 
 import './ChatLobby.css';
-import { eyeClosedSvg, eyeOpenSvg, logoutSvg, plusSvg, froidJpg } from '../../assets';
+import { eyeClosedSvg, eyeOpenSvg, logoutSvg, plusSvg } from '../../assets';
 
 function ChatLobby() {
   const dispatch = useDispatch();
@@ -56,7 +56,9 @@ function ChatLobby() {
               image={value.photoURL}
               name={value.name}
               message={value.lastMessage}
-              onClick={() => dispatch(changePage({ name: 'room', roomId: key }))}
+              onClick={() =>
+                dispatch(changePage({ name: 'room', room: { key, name: value.name } }))
+              }
             />
           );
         })}

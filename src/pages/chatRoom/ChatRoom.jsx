@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ref, push, update } from 'firebase/database';
+import { ref, push, update, onChildAdded, get } from 'firebase/database';
 
 import { db } from '../../firebase/firebase';
 import { changePage } from '../../store/slices/pageSlice';
@@ -8,14 +8,16 @@ import { changePage } from '../../store/slices/pageSlice';
 import { ChatMessage, NavBar } from '../../components';
 
 import './ChatRoom.css';
-import { backSvg, sendSvg, froidJpg } from '../../assets';
+import { backSvg, sendSvg } from '../../assets';
 
 function ChatRoom() {
   const dispatch = useDispatch();
 
   const userUid = useSelector((state) => state.auth.uid);
-  const roomId = useSelector((state) => state.page.roomId);
+  const room = useSelector((state) => state.page.room);
   const [textValue, setTextValue] = useState('');
+  const [messages, setMessages] = useState([]);
+  const [members, setMembers] = useState({});
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -26,11 +28,32 @@ function ChatRoom() {
       message: textValue,
       createdAt: new Date().getTime()
     };
-    push(ref(db, `messages/${roomId}`), data);
-    update(ref(db, `chats/${roomId}`), { lastMessage: textValue });
+    push(ref(db, `messages/${room.key}`), data);
+    update(ref(db, `chats/${room.key}`), { lastMessage: textValue });
 
     setTextValue('');
   };
+
+  useEffect(() => {
+    if (!room.key) {
+      return;
+    }
+
+    return onChildAdded(ref(db, `messages/${room.key}`), async (snapshot) => {
+      const senderUid = snapshot.val().senderUid;
+      if (!members[senderUid]) {
+        const senderData = await get(ref(db, `users/${senderUid}`)).then((snapshot) =>
+          snapshot.val()
+        );
+
+        setMembers((prevState) => ({
+          ...prevState,
+          [senderUid]: senderData
+        }));
+      }
+      setMessages((arr) => [...arr, { key: snapshot.key, data: snapshot.val() }]);
+    });
+  }, [room.key]);
 
   return (
     <>
@@ -43,221 +66,24 @@ function ChatRoom() {
           <span className="text-blue">back</span>
         </div>
         <div>
-          <h1>Froid</h1>
+          <h1>{room.name}</h1>
         </div>
         <div className="navbar-right "></div>
       </NavBar>
       <div id="chat-messager" className="scroll-element">
-        <ChatMessage senderClass="sent" senderName="Juan" photoURL={froidJpg}>
-          {' '}
-          TESTE{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat est provident maiores! Ad
-          provident iste aspernatur? Earum quisquam id incidunt tempora ratione nisi, deleniti iure,
-          deserunt temporibus quidem alias fugiat!{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
-        <ChatMessage senderClass="received" senderName="Froid" photoURL={froidJpg}>
-          {' '}
-          Teste 2{' '}
-        </ChatMessage>
+        {messages &&
+          messages.map((m) => {
+            return (
+              <ChatMessage
+                key={m.key}
+                senderClass={m.data.senderUid === userUid ? 'sent' : 'received'}
+                senderName={members[m.data.senderUid].name}
+                photoURL={members[m.data.senderUid].photoURL}
+              >
+                {m.data.message}
+              </ChatMessage>
+            );
+          })}
       </div>
       <form id="chat-sender">
         <textarea
