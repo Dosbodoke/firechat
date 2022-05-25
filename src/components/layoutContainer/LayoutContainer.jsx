@@ -1,7 +1,5 @@
 import './LayoutContainer.css';
 
-function LayoutContainer(props) {
-  return <main className="container">{props.children}</main>;
+export default function LayoutContainer(props) {
+  return <div id="layout-container">{props.children}</div>;
 }
-
-export default LayoutContainer;

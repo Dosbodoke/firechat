@@ -1,7 +1,7 @@
 import './NavBar.css';
 
 function NavBar(props) {
-  return <div className="navbar">{props.children}</div>;
+  return <nav className="navbar">{props.children}</nav>;
 }
 
 export default NavBar;

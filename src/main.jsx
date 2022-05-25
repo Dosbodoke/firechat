@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 
 import { store } from './store';
 
-import './index.css';
 import App from './app/App';
 import { LayoutContainer } from './components';
 

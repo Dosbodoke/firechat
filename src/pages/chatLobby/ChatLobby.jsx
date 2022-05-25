@@ -48,7 +48,7 @@ function ChatLobby() {
           <img className="icon icon-blue" src={plusSvg} alt="new chat" />
         </div>
       </NavBar>
-      <div className="scroll-element">
+      <main id="chat-lobby" className="scroll-element">
         {Object.entries(chats).map(([key, value]) => {
           return (
             <ChatContact
@@ -62,7 +62,7 @@ function ChatLobby() {
             />
           );
         })}
-      </div>
+      </main>
     </>
   );
 }

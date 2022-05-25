@@ -1,4 +1,4 @@
-.login-page {
+#login-page {
   position: relative;
   height: 100vh;
 }
@@ -6,17 +6,18 @@
 .login-header {
   font-family: 'Russo One';
   text-align: center;
-  padding-top: 128px;
+  margin-top: 10vh;
 }
 
 .login-button {
+  width: max-content;
+  position: absolute;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  position: fixed;
-  padding: 15px;
+  gap: .3rem;
+  padding: .5rem;
   background-color: #1877f2;
   top: 50%;
   right: 50%;
@@ -24,11 +25,7 @@
   z-index: 1;
 }
 
-.login-button div {
-  font-size: 2rem;
-}
-
-.background-logo {
+#background-logo {
   position: absolute;
   bottom: 0;
   opacity: 0.25;

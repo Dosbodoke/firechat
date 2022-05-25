@@ -13,13 +13,13 @@ function LoginPage() {
   };
 
   return (
-    <div className="login-page">
+    <div id="login-page">
       <h1 className="login-header">FIRECHAT</h1>
       <div className="login-button" onClick={handleLogin}>
-        <img className="icon" src={googleSvg} alt="" />
-        <div>Login with Google</div>
+        <img className="icon" src={googleSvg} alt="Google icon" />
+        <h2>Login with Google</h2>
       </div>
-      <img className="background-logo" src={flameSvg} alt="" />
+      <img id="background-logo" src={flameSvg} alt="" />
     </div>
   );
 }

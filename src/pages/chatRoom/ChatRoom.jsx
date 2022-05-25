@@ -70,7 +70,7 @@ function ChatRoom() {
         </div>
         <div className="navbar-right "></div>
       </NavBar>
-      <div id="chat-messager" className="scroll-element">
+      <main id="chat-messager" className="scroll-element">
         {messages &&
           messages.map((m) => {
             return (
@@ -84,7 +84,7 @@ function ChatRoom() {
               </ChatMessage>
             );
           })}
-      </div>
+      </main>
       <form id="chat-sender">
         <textarea
           placeholder="Remember, be nice!"
