@@ -23,7 +23,7 @@ I decided to make a version with multiple rooms.
     │  ├─ App.jsx
     ├─ assets/       # Hold project images and svg
     ├─ components/   # JSX reusable componets
-    ├─ firebase/     # Initialize firebase auth, db, storage 
+    ├─ firebase/     # Initialize firebase auth, db, storage
     ├─ pages/
     ├─ store/        # Hold redux store and slices
     ├─ index.css
@@ -63,7 +63,7 @@ For this projects, the following services will be used, so enable them on fireba
 
 - Realtime Database: Choosed based on the [firebase recommendation](https://firebase.google.com/docs/database/rtdb-vs-firestore?#which_database_does_firebase_recommend) for the needs of this project.
   **Database schema example**
-  
+
   ```json
   {
      "chats": {
@@ -98,7 +98,7 @@ For this projects, the following services will be used, so enable them on fireba
      }
   }
   ```
-  
+
 - Authentication ( Google auth )
 - Storage: To save user and groups profile images
 

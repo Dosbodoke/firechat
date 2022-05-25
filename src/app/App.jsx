@@ -1,16 +1,9 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
+import { onChildAdded, onChildRemoved, onValue, ref, off, get, set } from 'firebase/database';
 
-import { auth } from '../firebase/firebase';
-import {
-  getData,
-  setData,
-  updateData,
-  listenChildrens,
-  listenValue,
-  removeReference
-} from '../firebase/firebase.database';
+import { auth, db } from '../firebase/firebase';
 import { saveUser } from '../store/slices/authSlice';
 import { saveChat, removeChat } from '../store/slices/chatSlice';
 import { getShortName, photoIsOutdated } from '../utils';
@@ -24,29 +17,27 @@ export default function App() {
 
   async function checkUserData(uid, name, photoURL) {
     try {
-      const path = `users/${uid}`;
-      const dbUser = await getData(path);
+      const refUser = ref(db, `users/${uid}`);
+      const dbUser = await get(refUser).then((snapshot) =>
+        snapshot.exists ? snapshot.val() : undefined
+      );
       const userData = {
         uid: uid,
         photoURL: photoURL
       };
 
       if (dbUser) {
-        if (photoIsOutdated(photoURL, dbUser.photoURL)) await updateData(path, { photoURL });
+        if (photoIsOutdated(photoURL, dbUser.photoURL)) await update(refUser, { photoURL });
         userData.name = dbUser.name;
       } else {
         const shortName = getShortName(name);
-        await setData(path, { name: shortName, photoURL });
+        await set(refUser, { name: shortName, photoURL });
         userData.name = shortName;
       }
       return userData;
     } catch (error) {
       console.log(error);
     }
-  }
-
-  function storeValue(snapshot) {
-    dispatch(saveChat({ key: snapshot.key, data: snapshot.val() }));
   }
 
   useEffect(() => {
@@ -62,13 +53,17 @@ export default function App() {
   }, []);
 
   if (user.isLoggedIn) {
-    listenChildrens(`users/${user.uid}/chats`, (event, data) => {
-      if (event === 'added') {
-        listenValue(`chats/${data.key}`, storeValue);
-      } else if (event === 'removed') {
-        removeReference(`chats/${data.key}`);
-        dispatch(removeChat(data.key));
-      }
+    const userChatsRef = ref(db, `users/${user.uid}/chats`);
+
+    onChildAdded(userChatsRef, (data) => {
+      onValue(ref(db, `chats/${data.key}`), (snapshot) => {
+        dispatch(saveChat({ key: snapshot.key, data: snapshot.val() }));
+      });
+    });
+
+    onChildRemoved(userChatsRef, (data) => {
+      off(`chats/${data.key}`);
+      dispatch(removeChat(data.key));
     });
   }
 
