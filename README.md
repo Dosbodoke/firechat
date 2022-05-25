@@ -116,9 +116,7 @@ Then create the following folders inside src
 
 For the store will be used **Redux toolkit**, for that, run `npm install --save @reduxjs/toolkit react-redux`
 
-Then create an `store.js` inside src folder with te following code
-
-The **slices** will live along the correspondent component.
+Then create a `store.js` and `slices/` inside `src/store/`, all redux related logic will live in this folder.
 
 ## RESOURCES
 
