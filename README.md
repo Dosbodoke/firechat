@@ -67,30 +67,30 @@ For this projects, the following services will be used, so enable them on fireba
   ```json
   {
      "chats": {
-       ${chatUid}: {
+       "${chatUid}": {
          "lastMessage": "string",
          "name": "string",
          "photoURL": "string"
        },
      },
      "members": {
-       ${chatUid}: {
-         ${userUid}: true,
-       },
+       "${chatUid}": {
+         "${userUid}": true
+       }
      },
-     messages: {
-       ${chatUid}: {
-         ${messageUid}: {
-           "createdAt": int (timestamp),
+     "messages": {
+       "${chatUid}": {
+         "${messageUid}": {
+           "createdAt": "int (timestamp)",
            "message": "string",
            "senderUid": "string"
          }
        }
      },
-     users: {
-       ${userUid}: {
+     "users": {
+       "${userUid}": {
          "chats": {
-           ${chatUid}: true,
+           "${chatUid}": true
          },
          "name": "string",
          "photoURL": "string"
