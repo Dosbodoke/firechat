@@ -1,0 +1,4 @@
+.uid-display.hide small {
+  text-shadow: rgba(255, 255, 255, 0.7) 0px 0 8px;
+  color: transparent;
+}

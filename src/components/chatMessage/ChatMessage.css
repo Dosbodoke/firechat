@@ -1,10 +1,15 @@
 .message-container {
   position: relative;
   display: flex;
-  gap: 1em;
+  gap: 0.5em;
+}
+
+.message-container.received {
+  margin-left: 1em;
 }
 
 .message-container.sent {
+  margin-right: 1em;
   flex-direction: row-reverse;
 }
 
