@@ -5,7 +5,7 @@ import { ref, push, update, onChildAdded, get } from 'firebase/database';
 import { db } from '../../firebase/firebase';
 import { changePage } from '../../store/slices/pageSlice';
 
-import { ChatMessage, NavBar } from '../../components';
+import { ChatMessage, NavBar, UidViewer } from '../../components';
 
 import './ChatRoom.css';
 import { backSvg, sendSvg } from '../../assets';
@@ -65,8 +65,9 @@ function ChatRoom() {
           <img className="icon icon-blue" src={backSvg} alt="Back to lobby" />
           <span className="text-blue">back</span>
         </div>
-        <div>
+        <div className="navbar-middle">
           <h1>{room.name}</h1>
+          <UidViewer uid={room.key} />
         </div>
         <div className="navbar-right "></div>
       </NavBar>
