@@ -23,7 +23,6 @@ function ChatLobby() {
         </div>
         <div className="navbar-middle">
           <h1>{userName}</h1>
-          <UidViewer uid={userUid} />
         </div>
         <div
           className="navbar-right navbar-button"

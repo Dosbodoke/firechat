@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
-import { onChildAdded, onChildRemoved, onValue, ref, off, get, set } from 'firebase/database';
+import { onChildAdded, onChildRemoved, onValue, ref, off, get, set, update } from 'firebase/database';
 
-import { auth, db } from '../firebase/firebase';
+import { auth, db, defaultRoom } from '../firebase/firebase';
 import { saveUser } from '../store/slices/authSlice';
 import { saveChat, removeChat } from '../store/slices/chatSlice';
 import { getShortName, photoIsOutdated } from '../utils';
@@ -32,6 +32,14 @@ export default function App() {
       } else {
         const shortName = getShortName(name);
         await set(refUser, { name: shortName, photoURL });
+        
+        if (defaultRoom) {
+          const updates = {}
+          updates[`/users/${uid}/chats/${defaultRoom}`] = true;
+          updates[`/members/${defaultRoom}`] = { [uid]: true };  
+          await update(ref(db), updates)
+        }
+
         userData.name = shortName;
       }
       return userData;

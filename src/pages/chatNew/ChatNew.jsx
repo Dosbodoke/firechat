@@ -96,7 +96,7 @@ function ChatNew() {
           <img className="icon icon-blue" src={backSvg} alt="Back to lobby" />
           <span className="text-blue">back</span>
         </div>
-        <div>
+        <div className='navbar-middle'>
           <h1>New Chat</h1>
         </div>
         <div className="navbar-right "></div>
