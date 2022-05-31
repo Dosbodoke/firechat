@@ -26,7 +26,6 @@ I decided to make a version with multiple rooms.
     ├─ firebase/     # Initialize firebase auth, db, storage
     ├─ pages/
     ├─ store/        # Hold redux store and slices
-    ├─ index.css
     ├─ main.jsx
     .gitignore
     .prettierrc
@@ -55,9 +54,12 @@ const firebaseConfig = {
   measurementId: 'G-KP0TZ1GDR4'
 };
 
-const defaultRoom = "${ROOM_KEY}"
+const defaultRoomConfig = {
+  key: '',
+  photoURL: ''
+}
 
-export { firebaseConfig, defaultRoom };
+export { firebaseConfig, defaultRoomConfig };
 ```
 
 For this projects, the following services will be used, so enable them on firebase console:

@@ -6,11 +6,12 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { db, storage } from '../../firebase/firebase';
 import { changePage } from '../../store/slices/pageSlice';
+import { defaultRoomConfig } from '../../firebase/firebaseConfig';
 
 import NavBar from '../../components/navbar/NavBar';
 
 import './ChatNew.css';
-import { backSvg, logoPng } from '../../assets';
+import { backSvg } from '../../assets';
 
 function ChatNew() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ function ChatNew() {
   const userUid = useSelector((state) => state.auth.uid);
   const [newChatName, setNewChatName] = useState('');
   const [joinId, setJoinId] = useState('');
-  const [imgUrl, setImgUrl] = useState(logoPng);
+  const [imgUrl, setImgUrl] = useState(defaultRoomConfig.photoURL);
   const [progresspercent, setProgresspercent] = useState(0);
 
   const createNewChat = async (e) => {

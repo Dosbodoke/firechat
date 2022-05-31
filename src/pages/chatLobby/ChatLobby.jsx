@@ -4,7 +4,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase/firebase';
 import { changePage } from '../../store/slices/pageSlice';
 
-import { ChatContact, NavBar, UidViewer } from '../../components';
+import { ChatContact, NavBar } from '../../components';
 
 import './ChatLobby.css';
 import { logoutSvg, plusSvg } from '../../assets';
@@ -12,7 +12,6 @@ import { logoutSvg, plusSvg } from '../../assets';
 function ChatLobby() {
   const dispatch = useDispatch();
   const chats = useSelector((state) => state.chat);
-  const userUid = useSelector((state) => state.auth.uid);
   const userName = useSelector((state) => state.auth.name);
 
   return (

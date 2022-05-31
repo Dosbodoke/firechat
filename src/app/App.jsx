@@ -12,7 +12,8 @@ import {
   update
 } from 'firebase/database';
 
-import { auth, db, defaultRoom } from '../firebase/firebase';
+import { defaultRoomConfig } from '../firebase/firebaseConfig';
+import { auth, db } from '../firebase/firebase';
 import { saveUser } from '../store/slices/authSlice';
 import { saveChat, removeChat } from '../store/slices/chatSlice';
 import { getShortName, photoIsOutdated } from '../utils';
@@ -42,10 +43,10 @@ export default function App() {
         const shortName = getShortName(name);
         await set(refUser, { name: shortName, photoURL });
 
-        if (defaultRoom) {
+        if (defaultRoomConfig.key) {
           const updates = {};
-          updates[`/users/${uid}/chats/${defaultRoom}`] = true;
-          updates[`/members/${defaultRoom}`] = { [uid]: true };
+          updates[`/users/${uid}/chats/${defaultRoomConfig.key}`] = true;
+          updates[`/members/${defaultRoomConfig.key}`] = { [uid]: true };
           await update(ref(db), updates);
         }
 

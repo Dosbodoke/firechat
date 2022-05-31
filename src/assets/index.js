@@ -6,16 +6,5 @@ import googleSvg from './google.svg';
 import logoutSvg from './logout.svg';
 import plusSvg from './plus.svg';
 import sendSvg from './send.svg';
-import logoPng from './logo.png';
 
-export {
-  backSvg,
-  eyeClosedSvg,
-  eyeOpenSvg,
-  flameSvg,
-  googleSvg,
-  logoutSvg,
-  plusSvg,
-  sendSvg,
-  logoPng
-};
+export { backSvg, eyeClosedSvg, eyeOpenSvg, flameSvg, googleSvg, logoutSvg, plusSvg, sendSvg };
