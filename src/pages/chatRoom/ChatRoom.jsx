@@ -60,8 +60,7 @@ function ChatRoom() {
       <NavBar>
         <div
           className="navbar-left navbar-button navbar-button--text"
-          onClick={() => dispatch(changePage({ name: 'lobby' }))}
-        >
+          onClick={() => dispatch(changePage({ name: 'lobby' }))}>
           <img className="icon icon-blue" src={backSvg} alt="Back to lobby" />
           <span className="text-blue">back</span>
         </div>
@@ -79,8 +78,7 @@ function ChatRoom() {
                 key={m.key}
                 senderClass={m.data.senderUid === userUid ? 'sent' : 'received'}
                 senderName={members[m.data.senderUid].name}
-                photoURL={members[m.data.senderUid].photoURL}
-              >
+                photoURL={members[m.data.senderUid].photoURL}>
                 {m.data.message}
               </ChatMessage>
             );
@@ -90,8 +88,7 @@ function ChatRoom() {
         <textarea
           placeholder="Remember, be nice!"
           value={textValue}
-          onInput={(e) => setTextValue(e.target.value)}
-        ></textarea>
+          onInput={(e) => setTextValue(e.target.value)}></textarea>
         <button onClick={sendMessage}>
           <img className="icon" src={sendSvg} alt="send" />
         </button>
