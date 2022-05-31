@@ -44,14 +44,14 @@ The config will live on an untracked file `src/firebase/firebaseConfig.js` with 
 
 ```JavaScript
 const firebaseConfig = {
-  apiKey: 'AIzaSyAqK-nFZ1pwesBz1VOdpLs56nhnjtTLyvc',
-  authDomain: 'firechat-8d717.firebaseapp.com',
-  databaseURL: 'https://firechat-8d717-default-rtdb.firebaseio.com',
-  projectId: 'firechat-8d717',
-  storageBucket: 'firechat-8d717.appspot.com',
-  messagingSenderId: '263644489955',
-  appId: '1:263644489955:web:050a04e4707c84402a3dd6',
-  measurementId: 'G-KP0TZ1GDR4'
+  apiKey: '',
+  authDomain: '',
+  databaseURL: '',
+  projectId: '',
+  storageBucket: '',
+  messagingSenderId: '',
+  appId: '',
+  measurementId: ''
 };
 
 const defaultRoomConfig = {
