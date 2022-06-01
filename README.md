@@ -27,6 +27,7 @@ I decided to make a version with multiple rooms.
     ├─ pages/
     ├─ store/        # Hold redux store and slices
     ├─ main.jsx
+    .eslintrc.json
     .gitignore
     .prettierrc
     index.html
@@ -35,6 +36,8 @@ I decided to make a version with multiple rooms.
     README.md
     vite.config.js
 ```
+
+Click [here](https://dev.to/knowankit/setup-eslint-and-prettier-in-react-app-357b) to see about EsLint + Prettier setup
 
 ## Firebase
 
@@ -130,3 +133,4 @@ Then create a `store.js` and `slices/` inside `src/store/`, all redux related lo
 - [SVG icons](https://www.svgrepo.com/)
 - [UI Style guide](https://material.io/design/color/dark-theme.html#properties)
 - [Convert HEX color to CSS filter](https://codepen.io/sosuke/pen/Pjoqqp)
+- [EsLint + Prettier setup](https://dev.to/knowankit/setup-eslint-and-prettier-in-react-app-357b)
