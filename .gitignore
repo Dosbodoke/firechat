@@ -23,5 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-# Config
+# firebase
 firebaseConfig.js
+.firebase
+.firebaserc
+firebase.json

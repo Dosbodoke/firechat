@@ -124,6 +124,12 @@ For the store will be used **Redux toolkit**, for that, run `npm install --save 
 
 Then create a `store.js` and `slices/` inside `src/store/`, all redux related logic will live in this folder.
 
+## Deploy
+
+Made with firebase hosting following the vite instruction.
+
+[Tutorial](https://vitejs.dev/guide/static-deploy.html#google-firebase)
+
 ## RESOURCES
 
 - [React Best Practices](https://www.freecodecamp.org/news/best-practices-for-react/)
