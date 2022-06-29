@@ -101,6 +101,7 @@ function ChatNew() {
         </div>
         <div className="navbar-right "></div>
       </NavBar>
+
       <div id="chat-new-container">
         <form className="chat-form">
           <h2>Create new chat</h2>
@@ -125,7 +126,6 @@ function ChatNew() {
             <button onClick={createNewChat}>create</button>
           </div>
         </form>
-
         <form className="chat-form">
           <h2>Join a chat</h2>
           <p>Enter a chat ID and start a conversation</p>

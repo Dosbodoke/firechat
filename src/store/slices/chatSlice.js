@@ -6,7 +6,7 @@ export const chatSlice = createSlice({
   name: 'chat',
   initialState,
   reducers: {
-    saveChat: (state, action) => {
+    storeChat: (state, action) => {
       const { key, data } = action.payload;
       state[key] = data;
     },
@@ -16,6 +16,6 @@ export const chatSlice = createSlice({
   }
 });
 
-export const { saveChat, removeChat } = chatSlice.actions;
+export const { storeChat, removeChat } = chatSlice.actions;
 
 export default chatSlice.reducer;
