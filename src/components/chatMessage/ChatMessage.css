@@ -1,0 +1,35 @@
+.sent .message {
+  background-color: rgba(0, 92, 75, 1);
+}
+
+.received .message {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.message-container {
+  position: relative;
+  display: flex;
+  gap: 0.5em;
+}
+
+.message-container img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.message-container.sent {
+  margin-right: 1em;
+  flex-direction: row-reverse;
+}
+
+.message-container.received {
+  margin-left: 1em;
+}
+
+.message {
+  margin-top: 0.3em;
+  padding: 0.5em;
+  max-width: 60%;
+  border-radius: 10px;
+}

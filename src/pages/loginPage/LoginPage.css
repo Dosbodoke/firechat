@@ -1,0 +1,27 @@
+.login-header {
+  text-align: center;
+  margin-top: 10vh;
+  font-family: 'Russo One';
+}
+
+.login-button {
+  background-color: #1877f2;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.5rem;
+  z-index: 1;
+  cursor: pointer;
+  width: max-content;
+}
+
+#background-logo {
+  position: absolute;
+  bottom: 0;
+  opacity: 0.25;
+}

@@ -1,0 +1,39 @@
+#navbar {
+  background-color: rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  gap: 0.3em;
+  align-items: center;
+  text-align: center;
+  height: 5em;
+}
+
+#navbar .left+.right {
+  flex: 1;
+}
+
+#navbar .middle {
+  flex: 5;
+}
+
+#navbar .icon {
+  width: 90%;
+  max-height: 90%;
+}
+
+#navbar .button {
+  cursor: pointer;
+}
+
+#navbar .button--text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
+  gap: 0.3em;
+}
+
+#navbar .button--text .icon {
+  width: 1.4em;
+  height: 1.4em;
+}
