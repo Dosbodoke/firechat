@@ -1,8 +1,12 @@
 # Firechat
 
-A chat app built with React 18 and Firebase.
+*A chat app built with React 18 and Firebase*
 
-The idea came after watch and built the application from this video, from the youtube channel [**Fireship**](https://www.youtube.com/c/Fireship).
+This project was built with the objective of being documented and taught in a video on Youtube
+
+[![FIRECHAT Tutorial](https://img.youtube.com/vi/ztIdPnCYmcI/0.jpg)](https://www.youtube.com/watch?v=ztIdPnCYmcI)
+
+The idea came after watch and built the application on this video, from the youtube channel [**Fireship**](https://www.youtube.com/c/Fireship).
 
 [![Fireship video](https://img.youtube.com/vi/zQyrwxMPm88/0.jpg)](https://www.youtube.com/watch?v=zQyrwxMPm88&t)
 
