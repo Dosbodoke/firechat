@@ -12,38 +12,7 @@ The idea came after watch and built the application on this video, from the yout
 
 I decided to make a version with multiple rooms.
 
-## Initial Setup
-
-1. Init project: `npm init vite firechat`
-   - Select React whitout TypeScript
-2. On the project folder: `npm install`
-   - Make sure that React version in `package.json` is `^18.0.0`
-3. Clean boilerplate code:
-4. Rearrange the folder structure to look like this.
-
-```text
-    src/
-    ├─ app/
-    │  ├─ App.jsx
-    ├─ assets/       # Hold project images and svg
-    ├─ components/   # JSX reusable componets
-    ├─ firebase/     # Initialize firebase auth, db, storage
-    ├─ pages/
-    ├─ store/        # Hold redux store and slices
-    ├─ main.jsx
-    .eslintrc.json
-    .gitignore
-    .prettierrc
-    index.html
-    package-lock.json
-    package.json
-    README.md
-    vite.config.js
-```
-
-Click [here](https://dev.to/knowankit/setup-eslint-and-prettier-in-react-app-357b) to see about EsLint + Prettier setup
-
-## Firebase
+## Setup
 
 Follow the instruction to [setup firebase on a js project](https://firebase.google.com/docs/web/setup)
 
