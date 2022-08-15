@@ -10,7 +10,7 @@ The idea came after watch and built the application on this video, from the yout
 
 [![Fireship video](https://img.youtube.com/vi/zQyrwxMPm88/0.jpg)](https://www.youtube.com/watch?v=zQyrwxMPm88&t)
 
-I decided to make a version with multiple rooms.
+So I decided to make a version with multiple rooms.
 
 ## Setup
 
@@ -32,7 +32,7 @@ const firebaseConfig = {
 
 const defaultRoomConfig = {
   key: '',
-  photoURL: ''
+  photoURL: '' // Url pointing to the photo uploaded on firebase storage, it will be the default photo fow new chats
 }
 
 export { firebaseConfig, defaultRoomConfig };
@@ -80,22 +80,6 @@ For this projects, the following services will be used, so enable them on fireba
 
 - Authentication ( Google auth )
 - Storage: To save user and groups profile images
-
-## Building the UI
-
-Firstly I build the [UI in Figma](https://www.figma.com/file/xWSEVZcheB2anMFPPOZ42B/Firechat?node-id=0%3A1) to don't worry about the creative process when coding the UI.
-
-Then create the following folders inside src
-
-- assets: Will hold the images and svg's
-- components: Reusable components
-- pages: Components that represent an different page
-
-## Store
-
-For the store will be used **Redux toolkit**, for that, run `npm install --save @reduxjs/toolkit react-redux`
-
-Then create a `store.js` and `slices/` inside `src/store/`, all redux related logic will live in this folder.
 
 ## Deploy
 
