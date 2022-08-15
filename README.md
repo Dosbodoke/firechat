@@ -31,7 +31,6 @@ const firebaseConfig = {
 };
 
 const defaultRoomConfig = {
-  key: '',
   photoURL: '' // Url pointing to the photo uploaded on firebase storage, it will be the default photo fow new chats
 }
 
