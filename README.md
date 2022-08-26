@@ -1,6 +1,7 @@
 # Firechat
 
 *A chat app built with React 18 and Firebase*
+Final project link => https://firechat-2e2db.web.app/
 
 This project was built with the objective of being documented and taught in a video on Youtube
 
